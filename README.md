@@ -38,3 +38,36 @@ Python 3 (I'm using Python 3.10)
  * numpy  
  * logging  
  * unittest
+
+## Example output
+```
+C:\huckel-method> python main.py cyclic_polyene 6 --optimized
+INFO:root:Using general solution to obtain energies
+N      Degen.       Energy
+4      1             2.000
+3      2             1.000
+2      2            -1.000
+1      1            -2.000
+INFO:root:Program has finished successfuly
+```
+
+```
+C:\huckel-method> python main.py fullerene60                 
+N      Degen.       Energy
+15     3             2.618
+14     4             2.562
+13     4             2.000
+12     5             1.618
+11     3             1.438
+10     5             1.303
+9      3             0.382
+8      3             0.139
+7      5            -0.618
+6      9            -1.000
+5      4            -1.562
+4      3            -1.820
+3      5            -2.303
+2      3            -2.757
+1      1            -3.000
+INFO:root:Program has finished successfuly
+```
