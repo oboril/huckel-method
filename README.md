@@ -5,7 +5,8 @@ https://en.wikipedia.org/wiki/H%C3%BCckel_method
 
 In this script:  
 $\left<\Psi_i\middle|\hat{H}\middle|\Psi_i\right>=H_{i,i}=\alpha=0$  
-$\left<\Psi_i\middle|\hat{H}\middle|\Psi_j\right>=H_{i,j}=\beta=-1 \quad (i\ne j)$  
+$\left<\Psi_i\middle|\hat{H}\middle|\Psi_j\right>=H_{i,j}=\beta=-1$ if $i\ne j$ and $i$ and $j$ are adjacent  
+$\left<\Psi_i\middle|\hat{H}\middle|\Psi_j\right>=H_{i,j}=0$ if $i\ne j$ and $i$ and $j$ are not adjacent  
 $\left<\Psi_i\middle|\Psi_i\right>=S_{i,i}=1$  
 $\left<\Psi_i\middle|\Psi_j\right>=S_{i,j}=0 \quad (i\ne j)$  
 
