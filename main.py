@@ -14,7 +14,7 @@ def calc_platonic_solid(n_atoms, optimized):
     H = hm.platonic_solid(n_atoms)
     eigvals, eigvects = la.eigh(H)
 
-    print_results(-eigvals)
+    return -eigvals
 
 def calc_cyclic_polyene(n_atoms, optimized):
     if optimized:
@@ -23,12 +23,12 @@ def calc_cyclic_polyene(n_atoms, optimized):
         k = np.arange(n_atoms, dtype=float)
         energies = -2*np.cos(2*np.pi*k/n_atoms)
 
-        print_results(energies)
+        return energies
     else:
         H = hm.cyclic_polyene(n_atoms)
         eigvals, eigvects = la.eigh(H)
 
-        print_results(-eigvals)
+        return -eigvals
     
 
 def calc_linear_polyene(n_atoms, optimized):
@@ -38,12 +38,12 @@ def calc_linear_polyene(n_atoms, optimized):
         k = np.arange(n_atoms, dtype=float)
         energies = -2*np.cos((k+1)*np.pi/(n_atoms+1))
 
-        print_results(energies)
+        return energies
     else:
         H = hm.linear_polyene(n_atoms)
         eigvals, eigvects = la.eigh(H)
 
-        print_results(-eigvals)
+        return -eigvals
     
 
 def print_results(raw_energies):
@@ -66,10 +66,11 @@ def print_results(raw_energies):
     for i, (e,d) in list(enumerate(zip(energies, degeneracies)))[::-1]:
         print(form.format(i+1, d, e))
 
+
+# THE PROGRAM ENTERS HERE
 if __name__ == '__main__':
     # Parse the arguments from console
     structure, n_atoms, flags = parse_user_input()
-
 
     optimized = ("optimized" in flags)
     
@@ -79,11 +80,14 @@ if __name__ == '__main__':
     else:
         # Call the relevant function
         if structure == "platonic":
-            calc_platonic_solid(n_atoms, optimized)
+            energies = calc_platonic_solid(n_atoms, optimized)
         elif structure == "linear_polyene":
-            calc_linear_polyene(n_atoms, optimized)
+            energies = calc_linear_polyene(n_atoms, optimized)
         elif structure == "cyclic_polyene":
-            calc_cyclic_polyene(n_atoms, optimized)
+            energies = calc_cyclic_polyene(n_atoms, optimized)
+
+        # Print the energies
+        print_results(energies)
 
         logging.info("Program has finished successfuly")
 

@@ -1,3 +1,6 @@
+# This module contains function which return adjacency matrices
+# (which are identical to Huckel matrices in this case)
+
 import unittest
 import numpy as np
 import adjacency_matrices
@@ -21,7 +24,7 @@ def cyclic_polyene(n : int) -> np.ndarray:
 
 def platonic_solid(n : int) -> np.ndarray:
     """
-    Returns adjacency matrix for the given platonic solid
+    Returns adjacency matrix for the given platonic solid or fullerene
     """
     if n == 4:
         M = adjacency_matrices.tetrahedron

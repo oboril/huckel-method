@@ -1,9 +1,12 @@
+# Functions for parsing user input and printing help messages
+
 import sys
 import logging
 
 PLATONIC_SOLIDS = {"tetrahedron":4, "octahedron":6,"cube":8,"icosahedron":12,"dodecahedron":20, "fullerene60":60}
 POLYENES = {"linear_polyene", "cyclic_polyene", "platonic"}
 
+# Help message
 def print_help():
     print("Help Message")
     print("  To calculate the Huckel energies for specified pi-system, run:")
@@ -49,10 +52,10 @@ def extract_flags():
 
     return flags, args
 
-def parse_user_input() -> (str, int):
+def parse_user_input() -> (str, int, [str]):
     """
     Parses the console input. If the parsing is successful, returns (<structure_type>, <number_of_atoms>, <flags>).
-    Otherwise returns ("no_calc", 0)
+    Otherwise returns ("no_calc", 0, <flags>)
     """
     flags, args = extract_flags()
 

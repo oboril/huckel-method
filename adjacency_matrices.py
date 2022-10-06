@@ -1,3 +1,4 @@
+# This file contains definitions of adjacency matrices for platonic solids and fullerene C60
 # The adjacency matrices are taken from:
 # www.distanceregular.org/indexes/upto50vertices.html
 # math.stackexchange.com/questions/4477058/adjacency-matrix-for-soccer-ball-football
