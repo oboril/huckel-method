@@ -20,3 +20,9 @@ Example inputs:
   - python main.py platonic 4
   - python main.py fullerene60
 The output energies are relative to the atom energies, and are not scaled (alpha=0, beta=-1).
+
+## Requirements
+Python 3 (I'm using Python 3.10)
+numpy
+logging
+unittest
