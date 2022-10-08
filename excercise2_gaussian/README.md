@@ -36,11 +36,13 @@ energy;distance;angle
 The script `calculate_frequencies.py` uses the data to find the equilibrium geometry, vibrational frequencies, and classical limits. It can be also used to plot the energy potential.
 ```
 Usage:
-python calculate_frequencies.py [input file] [--graph, optional]
+python calculate_frequencies.py [input file] [--graph, --zlim=, optional]
 
 Parameters:
 [input file]: the .csv file containing energies, bond lengths and angles
 --graph : if this flag is used, a 3D graph of the potential energy will be shown
+--zlim=[number] : limit the maximum energy in graph up to [number] hartrees above from minimum
+--zlim=classical-limit : plots only data within two classical limits
 ```
 
 Example output:

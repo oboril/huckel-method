@@ -127,13 +127,31 @@ def estimate_frequencies_with_estimated_limits(iters=5):
     
     return freqs[:2], params[[0,3,4]], limits
 
-def plot_3D(data, filename):
-    fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+def plot_3D(data, filename, E_span=None, classical_limit=False, limits=None):
+    if E_span is not None:
+        z_min = np.min(data["energies"])
+        data["energies"] = np.where(data["energies"] > z_min+E_span, None, data["energies"])
+    elif classical_limit:
+        def find_limits(arr, min_val, max_val):
+            min_idx = np.argmin(np.where(arr < min_val, np.inf, arr))
+            max_idx = np.argmax(np.where(arr > max_val, -np.inf, arr))
+            return min_idx, max_idx
+        
+        r_lims = find_limits(data["distances"], *limits[0])
+        theta_lims = find_limits(data["angles"], *limits[1])
+
+        data["distances"] = data["distances"][r_lims[0]:r_lims[1]+1]
+        data["angles"] = data["angles"][theta_lims[0]:theta_lims[1]+1]
+        data["energies"] = data["energies"][r_lims[0]:r_lims[1]+1,theta_lims[0]:theta_lims[1]+1]
 
     dist, angl = np.meshgrid(data["distances"], data["angles"])
 
+    fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+
     surf = ax.plot_surface(dist, angl, data["energies"].T, cmap="coolwarm",
                            linewidth=0, antialiased=True)
+
+    
 
     ax.set_title(filename)
     ax.set_xlabel("r [A]")
@@ -153,6 +171,20 @@ if __name__ == "__main__":
     graph = False
     if "--graph" in sys.argv:
         graph = True
+    
+    zlim = None
+    classical_limit = False
+    for arg in sys.argv:
+        if arg.startswith("--zlim="):
+            if arg == "--zlim=classical-limits":
+                classical_limit=True
+                break
+            try:
+                zlim = float(arg[7:])
+            except Exception as ex:
+                logging.error(f"Cannot parse the zlim to float {arg}")
+                exit()
+
 
     # Load the data
     filename = sys.argv[1]
@@ -189,6 +221,7 @@ if __name__ == "__main__":
     print()
 
     if graph:
-        plot_3D(data, filename)
+        limits = [[minimum[1]-2*limits[0], minimum[1]+2*limits[0]], [minimum[2]-2*limits[1], minimum[2]+2*limits[1]]]
+        plot_3D(data, filename, zlim, classical_limit, limits)
 
     logging.info("Program terminated successfuly.")
