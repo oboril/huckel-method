@@ -43,6 +43,11 @@ Parameters:
 --graph : if this flag is used, a 3D graph of the potential energy will be shown
 --zlim=[number] : limit the maximum energy in graph up to [number] hartrees above from minimum
 --zlim=classical-limit : plots only data within two classical limits
+
+Examples:
+python calculate_frequencies.py H2O.csv
+python calculate_frequencies.py H2O.csv --graph
+python calculate_frequencies.py H2O.csv --graph --zlim=0.1
 ```
 
 Example output:
