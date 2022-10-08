@@ -13,6 +13,8 @@ Parameters:
 --full : include file names and quotes in the csv file
 --quotes : saves only the quotes (in alphabetical order without duplicates)
 ```
+By default, the saved file contains three columns:
+`energy [hartree], bond length [Angstroem], angle [degrees]`
 
 Example output:
 ```
@@ -29,9 +31,6 @@ energy;distance;angle
 -75.778034029;0.7000;102.0
 ...
 ```
-
-By default, the saved file contains three columns:
-`energy [hartree], bond length [Angstroem], angle [degrees]`
 
 ## Processing the data
 The script `calculate_frequencies.py` uses the data to find the equilibrium geometry, vibrational frequencies, and classical limits. It can be also used to plot the energy potential.
@@ -76,3 +75,15 @@ INFO:root:Program terminated successfuly.
 Example graph:  
 ![Example graph of the potential energy](example_graph.png?raw=true "Title")
 
+# The math behind frequency estimation
+To estimate the bivrational frequencies, the potential energy around minimum is fitted to the harmonic potential:
+
+$E=E_0+\frac{1}{2}k_r(r-\bar{r})^2+\frac{1}{2}k_\theta(\theta-\bar{\theta})^2$
+
+The wavelengths can be then estimated from the force constants $k_r$ and $k_\theta$ as follows:
+
+$\tilde{\nu} = \frac{1}{2\pi\tilde{c}} \sqrt{\frac{k_r}{{\mu}_r}}$
+
+$\tilde{\nu} = \frac{1}{2\pi\tilde{c}} \sqrt{\frac{k_\theta}{{\bar{r}}^2{\mu}_\theta}}$
+
+The effective masses are taken to be $\mu_r=2.0\text{ amu}$ and $\mu_\theta=0.5\text{ amu}$ as recommended in the handout.
