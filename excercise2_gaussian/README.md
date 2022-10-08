@@ -87,3 +87,13 @@ $$\tilde{\nu} = \frac{1}{2\pi\tilde{c}} \sqrt{\frac{k_r}{{\mu}_r}}$$
 $$\tilde{\nu} = \frac{1}{2\pi\tilde{c}} \sqrt{\frac{k_\theta}{{\bar{r}}^2{\mu}_\theta}}$$
 
 The effective masses are taken to be $\mu_r=2.0\text{ amu}$ and $\mu_\theta=0.5\text{ amu}$ as recommended in the handout.
+
+## Choosing the data for fitting
+The harmonic potential is a gross oversimplification of the actual potential energy and can be applied only close to the energy minimum.
+Thus, it is important to carefully choose what data points should be used to fit the harmonic potential.
+
+Instead of arbitrarily choosing some range or number of data points, the program estimates the classical limits of the vibrations. Any points within the classical limits are then used to estimate the harmonic potential. This calculation is repeated several times to ensure convergence (I chose to do 5 iterations, this is enough to ensure convergence).
+
+The classical limits are derived from the following equation:
+
+$$E_{\text{max class.}} = \frac{1}{2}h\tilde{c}\tilde{\nu}=\frac{1}{2}k_r(r-\bar{r})^2$$

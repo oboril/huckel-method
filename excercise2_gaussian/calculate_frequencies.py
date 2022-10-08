@@ -70,7 +70,7 @@ def fit_potential_around_minimum(data, delta_dist, delta_angl, min_dist=None, mi
 
     return params
 
-def calculate_frequencies(k_r, k_theta, r_mean, mu_r=2, mu_theta=0.5):
+def calculate_frequencies(k_r, k_theta, r_mean, mu_r=2.0, mu_theta=0.5):
     """Calculates the wavenumbers from force constants and mean bond length"""
 
     # convert everything to SI units and radians
