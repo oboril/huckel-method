@@ -52,7 +52,7 @@ python calculate_frequencies.py H2O.csv --graph --zlim=0.1
 
 Example output:
 ```
-C:\excercise2_gaussian>python calculate_frequencies.py data/H2S.csv --graph
+C:\excercise2_gaussian>python calculate_frequencies.py data/H2S.csv --graph --zlim=2-classical-limits 
 Datapoint with minimum energy:
 Energy [hartree]    r [Angstroem]       angle [degrees]     
 -398.6756280320     1.350               94.0
