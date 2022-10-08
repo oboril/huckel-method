@@ -42,7 +42,7 @@ Parameters:
 [input file]: the .csv file containing energies, bond lengths and angles
 --graph : if this flag is used, a 3D graph of the potential energy will be shown
 --zlim=[number] : limit the maximum energy in graph up to [number] hartrees above from minimum
---zlim=classical-limit : plots only data within two classical limits
+--zlim=2-classical-limits : plots only data within two classical limits
 
 Examples:
 python calculate_frequencies.py H2O.csv

@@ -176,7 +176,7 @@ if __name__ == "__main__":
     classical_limit = False
     for arg in sys.argv:
         if arg.startswith("--zlim="):
-            if arg == "--zlim=classical-limits":
+            if arg == "--zlim=2-classical-limits":
                 classical_limit=True
                 break
             try:
