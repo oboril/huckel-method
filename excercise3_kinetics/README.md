@@ -94,9 +94,20 @@ If the target resolution is 256x256 spatial pixels and we simulate two chemical 
 
 Next problem arises with stiff equations. Stiff equations, like the Oregonator system, must be solved using implicit integrator to achieve any reasonable accuracy. However, explicit integrators need to calculate the inverse of the Jacobian matrix, in the aforementioned scenario, the Jacobian is a $(256\times 256\times 2)\times (256\times 256\times 2)$ matrix which would take up over 68 GB.
 
-Although there might be some trick for solving this, I instead chose to replace the Oregonator system with more stable system. 
+Although there might be some trick for solving this, I instead chose to replace the Oregonator system with more stable system. Specifically, I chose the Lotka–Volterra equations which can be solved with high-order explicit Runge-Kutta integrator.
 
-# 2D Simulation of the Belousov-Zhabotinsky reaction
+I believe that the Lotka–Volterra equations are similar enough to the Oregonator or to the Belousov–Zhabotinsky reaction to capture at least the qualitative nature of the problem.
+
+### The code
+The code for this simulations is in `diffusion/belousov_zhabotinsky_reaction.py`. You can run the code as follows:
+
+```
+python diffusion\belousov_zhabotinsky_reaction.py [output_file.mp4] [resolution] [duration]
+    [output_file.mp4] - the file where the final animation will be saved
+    [resolution] - the resolution of the spatial dimensions, e.g. 64 will simulate 64x64 pixels
+    [duration] - the number of the simulated frames
+```
+
 Example output: 
 ```
 C:\excercise3_kinetics>python diffusion\belousov_zhabotinsky_reaction.py animation.mp4 64 1000
@@ -116,3 +127,4 @@ The solver successfully reached the end of the integration interval.
 Saving the animation...
 Animation saved
 ```
+The example animation can be found in `diffusion/animation.mp4`.
