@@ -1,15 +1,22 @@
+# This file contains the definition of the differential equations and the initial state
+# The ln(concentrations) is calculated to make the solution numerically stable
+
 import numpy as np
 
+# Rate constants
 ln_k1 = np.log(1.34)
 ln_k2 = np.log(1.6e9)
 ln_k3 = np.log(8e3)
 ln_k4 = np.log(4e7)
 ln_k5 = np.log(1)
 
+# Initial concentrations
 initial_concs = np.log([0.06, 0.06, 1e-50, 1e-50, 10**(-9.8), 10**(-6.52), 10**(-7.32)])
 
+# Names of the variables
 variables = "A B P Q X Y Z".split()
 
+# Definition of the differential equations
 def conc_changes(t, concs):
     ln_A, ln_B, ln_P, ln_Q, ln_X, ln_Y, ln_Z = concs
 
