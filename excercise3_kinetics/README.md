@@ -34,7 +34,7 @@ $$\left[N\right] = K^{R16}\cdot [I]$$
 
 
 ### Solution using numerical integration
-The same results can be also obtained by integrating the system of differential equations describing the kinetics and taking the concentrations at $t \rarr \infty $. In practice this is not possible, so a large value is chosen instead like $t = 10^6 \text{ s}$.
+The same results can be also obtained by integrating the system of differential equations describing the kinetics and taking the concentrations at $t \rightarrow \infty $. In practice this is not possible, so a large value is chosen instead like $t = 10^6 \text{ s}$.
 
 Because the equations are very stable after some initial time, the integration step becomes large and the integration finishes very quickly even if $t_\text{max} = 10^6 \text{ s}$.
 
