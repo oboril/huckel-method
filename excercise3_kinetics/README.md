@@ -13,21 +13,21 @@ $$K^i(\text{[urea]}) = \frac{k_f^i(\text{[urea]})}{k_u^i(\text{[urea]})}$$
 
 The equilibrium can be described using the following equations:
 
-$$
-K^{R15} = \frac{[I]}{[D]} \\
-K^{R16} = \frac{[N]}{[I]} \\
-\left[D\right] + [I] + [N] = 1
-$$
+
+$$K^{R15} = \frac{[I]}{[D]} $$
+$$K^{R16} = \frac{[N]}{[I]} $$
+$$\left[D\right] + [I] + [N] = 1 $$
+
 
 The last equation normalizes the concentrations so that the resulting concentrations are equal to the fractional concentrations.
 
 The solution to this system of equation is:
 
-$$
-    [D] = \frac{1}{1+K^{R15}+K^{R15}\cdot K^{R16}} \\
-    \left[I\right] = K^{R15}\cdot [D] \\
-    \left[N\right] = K^{R16}\cdot [I]
-$$
+
+$$[D] = \frac{1}{1+K^{R15}+K^{R15}\cdot K^{R16}}$$
+$$\left[I\right] = K^{R15}\cdot [D]$$
+$$\left[N\right] = K^{R16}\cdot [I]$$
+
 
 ### Solution using numerical integration
 The same results can be also obtained by integrating the system of differential equations describing the kinetics and taking the concentrations at $t \rarr \infty $. In practice this is not possible, so a large value is chosen instead like $t = 10^6 \text{ s}$.
@@ -50,11 +50,10 @@ Both scripts finish very quickly and produce the same graph.
 ## The Oregonator
 The trick to solving very stiff differential equations which span several orders of magnitude is to integrate the logarith of the variables. The equations then become:
 
-$$
-\ln(r_1) = \ln(k_1) + \ln[A] + \ln[Y] \\
-\frac{d\ln[A]}{dt} = \frac{d[A]}{dt}\frac{1}{[A]} = \exp\left(\ln(r_1)-\ln[A]\right) \\
-...
-$$
+$$\ln(r_1) = \ln(k_1) + \ln[A] + \ln[Y] $$
+$$\frac{d\ln[A]}{dt} = \frac{d[A]}{dt}\frac{1}{[A]} = \exp\left(\ln(r_1)-\ln[A]\right) $$
+$$...$$
+
 
 Using these equations, it is easy to solve for $\ln[A]$, $\ln[B]$, etc., and the values can be easily converted to $[A]$, $[B]$, etc. afterwards.
 
@@ -74,8 +73,9 @@ $$\frac{dc(t,x)}{dt} = - \alpha\cdot\nabla^2c(t,x)$$
 
 Where $\nabla^2$ is a Laplacian in the spatial dimension. Using finite differences, the Laplacian can be approximated using convolution. The convolution filters in 1D and 2D are:
 
+
+$$\left(-1,2,1\right) $$
 $$
-\left(-1,2,1\right) \\
 \begin{pmatrix}
 0 & -1 & 0 \\
 -1 & 4 & -1 \\
