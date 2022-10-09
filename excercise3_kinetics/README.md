@@ -135,3 +135,5 @@ Saving the animation...
 Animation saved
 ```
 The example animation can be found in `diffusion/animation.mp4`.
+
+![Snapshot of the diffusion animation](diffusion/snapshot.png)
