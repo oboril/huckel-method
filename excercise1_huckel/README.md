@@ -72,3 +72,12 @@ N      Degen.       Energy
 1      1            -3.000
 INFO:root:Program has finished successfuly
 ```
+
+## Physical significance of the results
+Apart from the common oversiplifications assumed in the Hückel theory, there are some more points that I would like to address.
+
+Firstly, I highly doubt that most of the platonic solids have any &pi; system at all. In tetrahedron, cube, octahedron, etc., the p orbitals would not be aligned to have a good bonding overlap with adjacent atoms. It is also more than likely that atoms which are not adjacent are still close enough to significantly interact.
+
+Next, the orbitals predicted for the C60 fullerene exhibit higher symmetry that the fullerene actually has, because not all the bond lengths are equal. In fact, the C60 fullerene has 2 types of bonds, and the reduction in symmetry splits some of the predicted orbitals.
+
+For linear and cyclic polyenes, the results are acceptable withing the assumptions for the Hückel method.
