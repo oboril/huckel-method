@@ -45,7 +45,7 @@ To get the solution using numerical integration, run `python iterative_solution.
 
 Both scripts finish very quickly and produce the same graph.
 
-![alt text](protein_folding/protein_folding.png)
+![The equilibrium composition at different urea concentrations](protein_folding/protein_folding.png)
 
 ## The Oregonator
 The trick to solving very stiff differential equations which span several orders of magnitude is to integrate the logarith of the variables. The equations then become:
@@ -59,6 +59,42 @@ $$
 Using these equations, it is easy to solve for $\ln[A]$, $\ln[B]$, etc., and the values can be easily converted to $[A]$, $[B]$, etc. afterwards.
 
 Because this is still a stiff equation, it is neccessary to use implicit integration method.
+
+### The code
+The code for solving the Oregonator equations is in `oregonator/`. The constants and differential equations are defined in `equations.py`.
+
+The code can be run using `python solve.py`. The resulting plot should look somethind like this:
+
+![The kinetics of the Oregonator reaction](oregonator/oregonator.png)
+
+## Simulating diffusion
+The diffusion can be described by the following partial differential equation:
+
+$$\frac{dc(t,x)}{dt} = - \alpha\cdot\nabla^2c(t,x)$$
+
+Where $\nabla^2$ is a Laplacian in the spatial dimension. Using finite differences, the Laplacian can be approximated using convolution. The convolution filters in 1D and 2D are:
+
+$$
+\left(-1,2,1\right) \\
+\begin{pmatrix}
+0 & -1 & 0 \\
+-1 & 4 & -1 \\
+0 & -1 & 0 \\
+\end{pmatrix}
+$$
+
+A simple simulation of diffusion in 1D and 2D can be found in `diffusion/diffusion_1D.py` and `diffusion/diffusion_2D.py`. The simulations assume closed finite container. The initial state is hard-coded, but can be easily changed in the code and the solution is general.
+
+For most initial conditions, diffusion is non-stiff problem, so explicit integrator can be used.
+
+## Simulating chemical reaction and diffusion together
+Firstly, it is important to discuss the hardware requirements for different approaches.
+
+If the target resolution is 256x256 spatial pixels and we simulate two chemical species, each iteration takes up $256 \cdot 256 \cdot 2 \cdot 4 = 2^{19} \approx 500 \text{ kB}$. Thus, even if we neglect any resources needed for the calculation, a laptop with 16 GB RAM can store only cca 32k iterations.
+
+Next problem arises with stiff equations. Stiff equations, like the Oregonator system, must be solved using implicit integrator to achieve any reasonable accuracy. However, explicit integrators need to calculate the inverse of the Jacobian matrix, in the aforementioned scenario, the Jacobian is a $(256\times 256\times 2)\times (256\times 256\times 2)$ matrix which would take up over 68 GB.
+
+Although there might be some trick for solving this, I instead chose to replace the Oregonator system with more stable system. 
 
 # 2D Simulation of the Belousov-Zhabotinsky reaction
 Example output: 
