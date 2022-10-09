@@ -15,7 +15,9 @@ The equilibrium can be described using the following equations:
 
 
 $$K^{R15} = \frac{[I]}{[D]} $$
+
 $$K^{R16} = \frac{[N]}{[I]} $$
+
 $$\left[D\right] + [I] + [N] = 1 $$
 
 
@@ -25,7 +27,9 @@ The solution to this system of equation is:
 
 
 $$[D] = \frac{1}{1+K^{R15}+K^{R15}\cdot K^{R16}}$$
+
 $$\left[I\right] = K^{R15}\cdot [D]$$
+
 $$\left[N\right] = K^{R16}\cdot [I]$$
 
 
@@ -51,7 +55,9 @@ Both scripts finish very quickly and produce the same graph.
 The trick to solving very stiff differential equations which span several orders of magnitude is to integrate the logarith of the variables. The equations then become:
 
 $$\ln(r_1) = \ln(k_1) + \ln[A] + \ln[Y] $$
+
 $$\frac{d\ln[A]}{dt} = \frac{d[A]}{dt}\frac{1}{[A]} = \exp\left(\ln(r_1)-\ln[A]\right) $$
+
 $$...$$
 
 
@@ -75,6 +81,7 @@ Where $\nabla^2$ is a Laplacian in the spatial dimension. Using finite differenc
 
 
 $$\left(-1,2,1\right) $$
+
 $$
 \begin{pmatrix}
 0 & -1 & 0 \\
