@@ -134,6 +134,6 @@ The solver successfully reached the end of the integration interval.
 Saving the animation...
 Animation saved
 ```
-The example animation can be found in `diffusion/animation.mp4`.
+The example animation can be found in `diffusion/animation.mp4`. A snapshot of the animation is shown below:
 
 ![Snapshot of the diffusion animation](diffusion/snapshot.png)
