@@ -75,3 +75,14 @@ Distance matrix:
 1.1152 1.1152 1.1241 1.1241 1.8188 1.8188 0.0000
 Coordinates saved to output.xyz
 ```
+
+# Results
+
+
+| # particles   | shape  | E(Lennard-Jones)  | E(Morse 1) | E(Morse 2) |
+| ------------- |-------------| -----| -----| ----- |
+| 3 | triangle                 | -0.7500 | 0.0000 | 0.0000 |
+| 4 | tetrahedron              | -1.5000 | 0.0000 | 0.0000 |
+| 5 | trigonal bipyramid       | -2.2760 | 0.1477 | 0.4567 |
+| 6 | octahedron               | -3.1780 | 0.2818 | 0.8664 |
+| 7 | pentagonal bipyramid     | -4.1263 | 0.6718 | 2.1732 |
