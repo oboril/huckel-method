@@ -34,12 +34,6 @@ python main.py fullerene60
 ```
 The output energies are relative to the atom energies, and are not scaled (alpha=0, beta=-1).
 
-## Requirements
-Python 3 (I'm using Python 3.10)  
- * numpy  
- * logging  
- * unittest
-
 ## Example output
 ```
 C:\huckel-method> python main.py cyclic_polyene 6 --optimized

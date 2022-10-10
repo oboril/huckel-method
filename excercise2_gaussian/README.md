@@ -104,10 +104,3 @@ Instead of arbitrarily choosing some range or number of data points, the program
 The classical limits are derived from the following equation:
 
 $$E_{\text{max class.}} = \frac{1}{2}h\tilde{c}\tilde{\nu}=\frac{1}{2}k_r(\Delta_{\text{max}} r)^2$$
-
-# Requirements
-Python 3.x (I'm using Python 3.10)
- * numpy
- * scipy
- * matplotlib 
- * logging
